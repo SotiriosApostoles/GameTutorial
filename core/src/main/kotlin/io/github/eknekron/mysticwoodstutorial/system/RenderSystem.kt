@@ -1,18 +1,17 @@
-package io.github.eknekron.mysticwoodstutorial
+package io.github.eknekron.mysticwoodstutorial.system
 
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.IteratingSystem
-import com.github.quillraven.fleks.World.Companion.family
-import com.github.quillraven.fleks.World.Companion.inject
+import com.github.quillraven.fleks.World
 import com.github.quillraven.fleks.collection.compareEntityBy
 import io.github.eknekron.mysticwoodstutorial.component.ImageComponent
 
 class RenderSystem(
-    private val stage: Stage = inject("GameStage")
+    private val stage: Stage = World.Companion.inject("GameStage")
 ) : IteratingSystem(
-    family { all(ImageComponent) },
-    compareEntityBy(ImageComponent)
+    World.family { all(ImageComponent.Companion) },
+    compareEntityBy(ImageComponent.Companion)
 ) {
 
     override fun onTick() {
@@ -26,6 +25,6 @@ class RenderSystem(
     }
 
     override fun onTickEntity(entity: Entity) {
-        entity[ImageComponent].image.toFront()
+        entity[ImageComponent.Companion].image.toFront()
     }
 }
