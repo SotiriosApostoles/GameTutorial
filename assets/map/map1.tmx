@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1">
+ <properties>
+  <property name="mapMusic" value="audio/map_bgd.mp3"/>
+ </properties>
+ <tileset firstgid="1" source="map.tsx"/>
+ <layer id="1" name="ground" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzjYWBg4MGCI3CIDwdMbb9FkGgmNrXDObwHW3wNV0wonIZCOA4FN47i0bgfaZiYuBmK8QcATWEe3Q==
+  </data>
+ </layer>
+ <layer id="2" name="bgd_1" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAPMKGTPdQGQ9Xdo4B4kEcjc5OBOJsG5qYDsQUUi9PAfBDA53Y5HGx6gYG2XwIHe7CBwVh2EZMnBqO7ByvAFVa0KtOGGwAAGwYF4Q==
+  </data>
+ </layer>
+ <layer id="3" name="fgd" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2B4AlYgDhtoR5AJhrLbR8HgBaPpahSMAgQAADa3ARI=
+  </data>
+ </layer>
+</map>

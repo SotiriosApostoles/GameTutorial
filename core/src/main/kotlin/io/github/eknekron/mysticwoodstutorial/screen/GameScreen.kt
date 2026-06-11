@@ -1,6 +1,8 @@
 package io.github.eknekron.mysticwoodstutorial.screen
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.maps.tiled.TmxMapLoader
+import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.viewport.ExtendViewport
@@ -11,6 +13,7 @@ import io.github.eknekron.mysticwoodstutorial.component.AnimationComponent
 import io.github.eknekron.mysticwoodstutorial.component.AnimationModel
 import io.github.eknekron.mysticwoodstutorial.component.AnimationType
 import io.github.eknekron.mysticwoodstutorial.component.ImageComponent
+import io.github.eknekron.mysticwoodstutorial.event.MapChangeEvent
 import io.github.eknekron.mysticwoodstutorial.system.AnimationSystem
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
@@ -33,6 +36,14 @@ class GameScreen : KtxScreen {
 
     override fun show() {
         log.debug { "GameScreen gets shown" }
+
+        world.systems.forEach { system ->
+            if (system is EventListener) {
+                stage.addListener(system)
+            }
+        }
+        val tiledMap = TmxMapLoader().load("map/map1.tmx")
+        stage.root.fire(MapChangeEvent(tiledMap))
 
         world.entity {
             it += ImageComponent().apply {
